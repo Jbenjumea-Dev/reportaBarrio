@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar un problema | ReportaBarrio</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <!-- Encabezado con el logo y el menú de navegación -->
+  <header class="encabezado">
+    <a class="logo" href="index.html">
+      <img src="img/logo.svg" alt="Logo de ReportaBarrio">
+      <span>ReportaBarrio</span>
+    </a>
+
+    <nav class="menu">
+      <a href="index.html">Inicio</a>
+      <a class="activo" href="reportar.html" aria-current="page">Reportar</a>
+      <a href="/reportes">Reportes</a>
+      <a href="/estadisticas">Estadísticas</a>
+    </nav>
+  </header>
+
+  <main class="contenido">
+    <section>
+      <h1>Reportar un problema del barrio</h1>
+      <p class="lead">Completa todos los campos. Los datos se envían al servidor con el método POST y el
+        reporte queda en estado "Pendiente".</p>
+
+      <!-- Los datos viajan a la ruta POST /reportes -->
+      <form id="formulario-reporte" method="POST" action="/reportes">
+        <div class="campo">
+          <label for="titulo">Título del reporte</label>
+          <input type="text" id="titulo" name="titulo" placeholder="Ejemplo: Luminaria apagada en la carrera 5"
+            required>
+        </div>
+
+        <div class="form-grid">
+          <div class="campo">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Seleccione una categoría</option>
+              <option value="vias">Vías y andenes</option>
+              <option value="alumbrado">Alumbrado público</option>
+              <option value="residuos">Residuos y basuras</option>
+              <option value="agua">Agua y alcantarillado</option>
+              <option value="espacio-publico">Espacio público</option>
+              <option value="seguridad-vial">Seguridad vial</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="barrio">Barrio</label>
+            <select id="barrio" name="barrio" required>
+              <option value="">Seleccione un barrio</option>
+              <option value="Centro">Centro</option>
+              <option value="La Esperanza">La Esperanza</option>
+              <option value="San José">San José</option>
+              <option value="El Prado">El Prado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="descripcion">Descripción del problema</label>
+          <textarea id="descripcion" name="descripcion" rows="4"
+            placeholder="Cuenta qué pasa, dónde está y desde cuándo" required></textarea>
+        </div>
+
+        <fieldset>
+          <legend>Urgencia</legend>
+          <div class="opciones-urgencia">
+            <label class="opcion" for="urgencia-baja">
+              <input type="radio" id="urgencia-baja" name="urgencia" value="baja" required>
+              <span>Baja</span>
+            </label>
+
+            <label class="opcion" for="urgencia-media">
+              <input type="radio" id="urgencia-media" name="urgencia" value="media" required>
+              <span>Media</span>
+            </label>
+
+            <label class="opcion" for="urgencia-alta">
+              <input type="radio" id="urgencia-alta" name="urgencia" value="alta" required>
+              <span>Alta</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="campo">
+          <label for="contacto">Correo de contacto</label>
+          <input type="email" id="contacto" name="contacto" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <p class="nota">Todos los campos son obligatorios.</p>
+        <button type="submit">Enviar reporte</button>
+      </form>
+    </section>
+
+    <aside class="aviso">
+      <h2>Consejos para un buen reporte</h2>
+      <ul>
+        <li>Usa un título que resuma el problema.</li>
+        <li>Elige la categoría más cercana al daño.</li>
+        <li>Escribe una descripción con el lugar exacto.</li>
+        <li>Marca la urgencia solo si hay riesgo para las personas.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="pie">
+    <p>ReportaBarrio - Proyecto de aula de Tecnologías Web</p>
+    <p>ODS 11: Ciudades y comunidades sostenibles</p>
+  </footer>
+</body>
+
+</html>
